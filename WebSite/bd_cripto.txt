@@ -1,0 +1,65 @@
+drop database doces_mel;
+
+create database doces_mel;
+
+use doces_mel;
+
+create table bolos
+(
+  cod_bolo int auto_increment,
+  desc_bolo text not null,
+  qtd_disponivel text not null, 
+  preco_bolo text not null,
+
+  primary key(cod_bolo)
+);
+
+insert into bolos values(0,'cH9Sq2BrTXTmTn+0i0cjnA==','TpQAQv8dD/sK7oaj6WL1NQ==','L+kVrUMM1nDXBxX7qQ4n/w==');
+insert into bolos values(0,'rgtvC4DMFbzm0iwC6Qm97g==','OXVI7/voLn7vZ6DDnqv1TQ==','sJaBgs6vhQt1IY41DGDs7Q==');
+insert into bolos values(0,'oIFNVybl9KcpCAcC5d8NSw==','aAdFuL8zke3/9MyhJPh/1A==','x6muF1iJ4ohnv/ny/6WXQQ==');
+
+create table sabores
+(
+  cod_sabor int auto_increment,
+  desc_sabor text not null,
+  acrescimo_sabor text not null,
+
+  primary key(cod_sabor)
+);
+
+insert into sabores values(0,'a1R/m60tbWdCR+HylIjs+Q==','LL6cNcp8lx2+d0mTXHy7yQ==');
+insert into sabores values(0,'b0wMEezzn5VcKmKIaHiyXA==','489fS7b4sqcuz2jGVtaC4w==');
+insert into sabores values(0,'nY1ee/M2jJzZmrVMt4e6EA==','J4gNAShvTuLR0z3/18gyRA==');
+
+create table vendedores
+(
+  cod_vendedor int auto_increment,
+  nome_vendedor text not null,
+  sal_vendedor text not null,
+  bonus_vendedor text not null,
+
+  primary key(cod_vendedor)
+);
+
+insert into vendedores values(0,'oIIEdCKVtwbeJ94C98xPLg==','YSIP+J2ii2TXA+3xFZoXPA==','BtabWm62FSFXmG7Cl9kLyg==');
+insert into vendedores values(0,'j2ee3hJ4z8NpPU1Q0YJmkA==','rnW8oru/CVa7nYwfOnF5zw==','BtabWm62FSFXmG7Cl9kLyg==');
+insert into vendedores values(0,'sBPSppu2G5xsuih29xU8XQ==','D78XCldIkFlDuzejEk53mA==','BtabWm62FSFXmG7Cl9kLyg==');
+
+
+create table vendas
+(
+  cod_vendas int auto_increment,
+  nomecliente text not null,
+  cod_bolo int not null,
+  cod_sabor int not null,
+  cod_vendedor int not null,
+  data_compra text not null,
+  qtd text not null,
+  total text not null, 
+
+  primary key(cod_vendas),
+  foreign key(cod_bolo) references bolos(cod_bolo),
+  foreign key(cod_sabor) references sabores(cod_sabor),
+  foreign key(cod_vendedor) references vendedores(cod_vendedor)
+);
+
